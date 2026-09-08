@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zed2101.github.io/dither-studio/sitemap.xml
