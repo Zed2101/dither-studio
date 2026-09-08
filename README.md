@@ -31,13 +31,13 @@ a Game Boy screenshot, a CGA screen or an old sepia print — then export it as 
 ## About
 
 Dither Studio is a single static page. There is no build step, no framework and no
-dependency — just `index.html`, `styles.css` and `app.js`, served straight from
-GitHub Pages.
+dependency — `index.html`, `styles.css` and `app.js`, plus self-hosted fonts, served
+straight from GitHub Pages.
 
 Everything happens on your own machine. Images are decoded, dithered and exported
 locally in a `<canvas>`; nothing is ever uploaded, and no analytics or trackers are
-loaded. Once the page is open it keeps working offline, and you can save the three
-files and open `index.html` from disk if you prefer.
+loaded. The page makes **no external requests at all**, so it keeps working offline
+and you can clone the repository and open `index.html` from disk if you prefer.
 
 A couple of notes on how it dithers, since it changes how the output looks:
 

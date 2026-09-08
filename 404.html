@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — Dither Studio</title>
+<meta name="description" content="That page does not exist. Head back to Dither Studio, the free in-browser image dithering tool.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0d1013">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/dither-studio/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/dither-studio/fonts.css">
+<link rel="stylesheet" href="/dither-studio/styles.css">
+<style>
+  .oops {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 24px;
+    text-align: center;
+  }
+  .oops-code {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 13px;
+    letter-spacing: .14em;
+    color: var(--accent);
+  }
+  .oops h1 { margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.02em; }
+  .oops p { margin: 0; max-width: 42ch; color: var(--muted); line-height: 1.6; }
+  .oops .btn-primary { margin-top: 10px; padding: 0 20px; text-decoration: none; }
+</style>
+</head>
+<body>
+<main class="oops">
+  <span class="drop-icon" aria-hidden="true"></span>
+  <span class="oops-code">ERROR 404</span>
+  <h1>This page doesn't exist</h1>
+  <p>The link may be out of date, or there may be a typo in the address. The tool itself is one page, and it's right here.</p>
+  <a class="btn btn-primary" href="/dither-studio/">Open Dither Studio</a>
+</main>
+<script>
+  // Match the theme the visitor picked on the main page.
+  try {
+    var saved = localStorage.getItem('dither.theme');
+    var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.classList.toggle('dark', dark);
+  } catch (e) { /* private mode */ }
+</script>
+</body>
+</html>

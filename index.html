@@ -3,37 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dither Studio — Retro image dithering in your browser</title>
-<meta name="description" content="Turn any image into 1-bit, Game Boy, CGA or sepia pixel art. Floyd–Steinberg, Atkinson, Bayer, halftone and more, with a live before/after view. Runs entirely in your browser — nothing is uploaded.">
+<title>Dither Studio — Free online image dithering tool</title>
+<meta name="description" content="Free online dithering tool. Turn any image into 1-bit, Game Boy, CGA or sepia pixel art with Floyd–Steinberg, Atkinson, Bayer or halftone. Nothing is uploaded.">
 <meta name="theme-color" content="#0d1013">
 <meta name="google-site-verification" content="ipMnhRdP8DGzb9EF7KdJMNUyE6qThfNxW7aOE_FZdts">
 <meta name="color-scheme" content="light dark">
+<meta name="author" content="Daniel Crantoc">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dither Studio">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="Dither Studio — Retro image dithering in your browser">
+<meta property="og:title" content="Dither Studio — Free online image dithering tool">
 <meta property="og:description" content="Turn any image into 1-bit, Game Boy, CGA or sepia pixel art. Floyd–Steinberg, Atkinson, Bayer, halftone and more, with a live before/after view. Runs entirely in your browser — nothing is uploaded.">
 <meta property="og:url" content="https://zed2101.github.io/dither-studio/">
 <meta property="og:image" content="https://zed2101.github.io/dither-studio/assets/og.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
 <meta property="og:image:alt" content="Dither Studio: an image shown half in colour, half dithered to black and white.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dither Studio — Retro image dithering in your browser">
+<meta name="twitter:title" content="Dither Studio — Free online image dithering tool">
 <meta name="twitter:description" content="Turn any image into 1-bit, Game Boy, CGA or sepia pixel art. 7 algorithms, 10 palettes, batch export. No upload, no install.">
 <meta name="twitter:image" content="https://zed2101.github.io/dither-studio/assets/og.png">
+<meta name="twitter:image:alt" content="Dither Studio: an image shown half in colour, half dithered to black and white.">
 
 <link rel="canonical" href="https://zed2101.github.io/dither-studio/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="styles.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Dither Studio","url":"https://zed2101.github.io/dither-studio/","applicationCategory":"MultimediaApplication","applicationSubCategory":"Image dithering tool","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript and HTML5 canvas","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"isAccessibleForFree":true,"license":"https://opensource.org/license/mit","softwareVersion":"1.0.0","image":"https://zed2101.github.io/dither-studio/assets/og.png","author":{"@type":"Person","name":"Daniel Crantoc","url":"https://github.com/Zed2101"},"sameAs":["https://github.com/Zed2101/dither-studio"],"description":"Turn any image into 1-bit, Game Boy, CGA or sepia pixel art. Floyd-Steinberg, Atkinson, Jarvis, ordered Bayer, threshold and halftone dithering with a live before/after view. Runs entirely in the browser, nothing is uploaded.","featureList":["Floyd-Steinberg dithering","Atkinson dithering","Jarvis-Judice-Ninke dithering","Ordered Bayer 8x8 dithering","Threshold and noise threshold","Halftone dots","10 palettes including Game Boy, CGA, EGA and sepia","Custom palette editor","Live before/after compare slider","PNG, clipboard and ZIP export"],"keywords":"dithering, Floyd-Steinberg, Atkinson, Bayer, halftone, 1-bit, pixel art, Game Boy palette, CGA, image converter"}</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebApplication","@id":"https://zed2101.github.io/dither-studio/#app","name":"Dither Studio","alternateName":"Dither Studio online dithering tool","url":"https://zed2101.github.io/dither-studio/","applicationCategory":"MultimediaApplication","applicationSubCategory":"Image dithering tool","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript and HTML5 canvas","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"isAccessibleForFree":true,"license":"https://opensource.org/license/mit","softwareVersion":"1.0.0","datePublished":"2026-09-03","image":"https://zed2101.github.io/dither-studio/assets/og.png","author":{"@type":"Person","name":"Daniel Crantoc","url":"https://github.com/Zed2101"},"sameAs":["https://github.com/Zed2101/dither-studio"],"description":"Turn any image into 1-bit, Game Boy, CGA or sepia pixel art. Floyd-Steinberg, Atkinson, Jarvis, ordered Bayer, threshold and halftone dithering with a live before/after view. Runs entirely in the browser, nothing is uploaded.","featureList":["Floyd-Steinberg dithering","Atkinson dithering","Jarvis-Judice-Ninke dithering","Ordered Bayer 8x8 dithering","Threshold and noise threshold","Halftone dots","10 palettes including Game Boy, CGA, EGA and sepia","Custom palette editor","Live before/after compare slider","PNG, clipboard and ZIP export"],"keywords":"dithering, Floyd-Steinberg, Atkinson, Bayer, halftone, 1-bit, pixel art, Game Boy palette, CGA, image converter"},{"@context":"https://schema.org","@type":"FAQPage","@id":"https://zed2101.github.io/dither-studio/#faq","mainEntity":[{"@type":"Question","name":"Are my images uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Images are decoded, dithered and exported locally in a canvas element inside your browser. Nothing is sent to a server, there is no account, and no analytics or tracking scripts are loaded."}},{"@type":"Question","name":"Which image formats can I use?","acceptedAnswer":{"@type":"Answer","text":"Anything your browser can decode, which in practice means PNG, JPEG, WebP, GIF, AVIF and SVG. Exports are always PNG so the dithered pixels stay exact."}},{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. The layout stacks on small screens, and the compare slider, pinch to zoom and drag to pan all work with touch."}},{"@type":"Question","name":"Is there a size limit?","acceptedAnswer":{"@type":"Answer","text":"There is no hard limit. The live preview is capped at 1400 pixels on the long edge to stay responsive, but exports are always rendered at the full resolution of the original image."}},{"@type":"Question","name":"Does it work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. The page is a handful of static files with no dependencies and no external requests, so once it has loaded it keeps working without a connection. You can also clone the repository and open index.html straight from disk."}},{"@type":"Question","name":"Can I use the dithered images commercially?","acceptedAnswer":{"@type":"Answer","text":"The tool is MIT licensed and claims no rights over what you make with it. Whatever rights you had in the image you started from are the ones that apply to the result."}}]}]</script>
 </head>
 <body>
+
+<a class="skip" href="#about">Skip to the guide</a>
 
 <div id="root" class="root">
   <input id="file" type="file" accept="image/*" multiple hidden>
@@ -43,6 +48,7 @@
     <h1 class="wordmark">Dither Studio</h1>
     <span id="status" class="status mono"></span>
     <span class="spacer"></span>
+    <a class="btn btn-sm topbar-link" href="#about">Guide</a>
     <a class="btn btn-icon" href="https://github.com/Zed2101/dither-studio" target="_blank" rel="noopener" title="View on GitHub" aria-label="View on GitHub">
       <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
     </a>
@@ -51,10 +57,10 @@
 
   <main class="workspace">
 
-    <section id="stage" class="stage" aria-label="Preview">
+    <section id="stage" class="stage" aria-label="Image preview">
       <div id="viewer" class="viewer" hidden>
-        <div class="layer"><canvas id="orig"></canvas></div>
-        <div class="layer" id="clip"><canvas id="dith"></canvas></div>
+        <div class="layer"><canvas id="orig" role="img" aria-label="Original image"></canvas></div>
+        <div class="layer" id="clip"><canvas id="dith" role="img" aria-label="Dithered result"></canvas></div>
         <div id="divider" class="divider">
           <span class="divider-line"></span>
           <span id="handle" class="handle" role="separator" aria-label="Drag to compare"><span>◀</span><span>▶</span></span>
@@ -82,22 +88,22 @@
 
     <aside class="panel" aria-label="Controls">
 
-      <section class="group">
+      <section class="group" aria-label="Images">
         <div class="group-head">
-          <h2 class="group-title">Images</h2>
+          <span class="group-title">Images</span>
           <button id="add" class="btn btn-sm" type="button">+ Add</button>
         </div>
         <div id="thumbs" class="thumbs" hidden></div>
         <p id="noImages" class="muted">No image loaded.</p>
       </section>
 
-      <section class="group">
-        <h2 class="group-title">Algorithm</h2>
+      <section class="group" aria-label="Algorithm">
+        <span class="group-title">Algorithm</span>
         <div id="algos" class="algos" role="radiogroup" aria-label="Algorithm"></div>
       </section>
 
-      <section class="group">
-        <h2 class="group-title">Parameters</h2>
+      <section class="group" aria-label="Parameters">
+        <span class="group-title">Parameters</span>
         <label class="field">
           <span class="field-head"><span>Pixel size</span><span id="pixelVal" class="mono muted"></span></span>
           <input id="pixel" type="range" min="1" max="12" step="1" value="2">
@@ -116,14 +122,14 @@
         </label>
       </section>
 
-      <section class="group">
-        <h2 class="group-title">Palette</h2>
+      <section class="group" aria-label="Palette">
+        <span class="group-title">Palette</span>
         <div id="palettes" class="palettes" role="radiogroup" aria-label="Palette"></div>
         <div id="customRow" class="custom-row" hidden></div>
       </section>
 
-      <section class="group">
-        <h2 class="group-title">Export</h2>
+      <section class="group" aria-label="Export">
+        <span class="group-title">Export</span>
         <p id="exportInfo" class="mono muted"></p>
         <button id="png" class="btn btn-primary" type="button" disabled>Download PNG</button>
         <div class="row">
@@ -137,6 +143,198 @@
 
   <div id="toast" class="toast" hidden></div>
 </div>
+
+<article id="about" class="doc">
+
+  <p class="doc-eyebrow mono">Guide</p>
+  <h2>What is dithering?</h2>
+  <p>
+    When you cut an image down to a handful of colours, most pixels no longer have an exact
+    match in the palette. Rounding each one to the nearest available colour throws that
+    difference away, and smooth gradients collapse into flat, ugly bands.
+  </p>
+  <p>
+    Dithering keeps the difference instead of discarding it. Some methods push the leftover
+    error onto neighbouring pixels that haven't been decided yet; others compare every pixel
+    against a repeating threshold pattern. Either way you get a deliberate speckle that your
+    eye blends back into the original tone — which is how an image with only black and white
+    can still appear to have shading.
+  </p>
+  <p>
+    It is the trick behind Macintosh screenshots, Game Boy sprites, newspaper photographs and
+    Teletext graphics, and it has had a strong revival in modern pixel art, album covers and
+    risograph-style print.
+  </p>
+
+  <h2>Which algorithm should I use?</h2>
+  <dl class="doc-list">
+    <dt>Floyd–Steinberg</dt>
+    <dd>
+      The default, and what most people mean by "dithering". It spreads each pixel's error
+      over four neighbours, giving a fine, even grain that holds detail well. Start here.
+    </dd>
+
+    <dt>Atkinson</dt>
+    <dd>
+      Written by Bill Atkinson for the original Macintosh. It passes on only three quarters of
+      the error, so highlights blow out and shadows crush. You lose some detail and gain a
+      crisp, high-contrast look that reads instantly as classic Mac.
+    </dd>
+
+    <dt>Jarvis–Judice–Ninke</dt>
+    <dd>
+      Spreads error across twelve neighbours instead of four. Slower and softer, with less of
+      the worm-like patterning Floyd–Steinberg can show in flat areas. Good for large, smooth
+      gradients such as skies.
+    </dd>
+
+    <dt>Bayer 8×8 — ordered</dt>
+    <dd>
+      No error diffusion at all: each pixel is compared against a fixed 8×8 threshold matrix.
+      That produces the regular crosshatch familiar from DOS games and old console hardware.
+      Because every pixel is decided independently of its neighbours, the pattern stays stable
+      across frames, which is why it suits animation and tiling textures.
+    </dd>
+
+    <dt>Threshold</dt>
+    <dd>
+      Every pixel simply snaps to the nearest palette colour, with no dithering whatsoever.
+      Use it for hard, graphic, poster-like results, and drive it with the brightness slider
+      to decide exactly where the cut falls.
+    </dd>
+
+    <dt>Noise</dt>
+    <dd>
+      Threshold with random jitter added before each decision. Gives a grainy, film-like
+      texture rather than a structured pattern, and never tiles visibly.
+    </dd>
+
+    <dt>Halftone</dt>
+    <dd>
+      Not a per-pixel method at all. It draws dots of varying size on a fixed grid, the way a
+      newspaper press or a screen-printed poster does. The dot grid slider sets the screen
+      frequency: small values give a fine print screen, large ones a bold pop-art look.
+    </dd>
+  </dl>
+
+  <h2>Palettes and tone</h2>
+  <p>
+    Ten palettes ship with the tool, and the custom one takes as many colours as you care to
+    add. They are not all handled the same way, because they don't all mean the same thing.
+  </p>
+  <p>
+    Palettes whose colours sit on a <strong>single tonal ramp</strong> — the grays, sepia, the
+    sixteen browns, the Game Boy greens — are dithered in luminance space rather than per RGB
+    channel. Diffusing error separately through red, green and blue on a ramp like that
+    introduces colour speckle that has nothing to do with the original image; working in
+    luminance keeps the tone clean.
+  </p>
+  <p>
+    The <strong>Game Boy</strong> palette gets one extra step. Its four greens only span
+    roughly 44 to 169 on the luminance scale, so matching them to real brightness would
+    collapse every highlight onto the lightest green and leave the picture muddy. Instead the
+    full 0–255 range is remapped across the four steps, which is what the hardware actually
+    did.
+  </p>
+  <p>
+    <strong>Full-colour palettes</strong> — CGA, EGA 16, the eight-colour RGB set and any
+    custom palette that isn't pure gray — are matched in RGB with a weighted distance that
+    approximates how the eye judges colour difference, and the error is diffused per channel.
+  </p>
+
+  <h2>Getting a good result</h2>
+  <dl class="doc-list">
+    <dt>Pixel size</dt>
+    <dd>
+      Dithers a smaller copy and scales it back up with hard edges. Raise it for a chunky,
+      obviously low-resolution look; leave it at 1 or 2 when you want the texture to stay
+      fine.
+    </dd>
+
+    <dt>Brightness / threshold</dt>
+    <dd>
+      The single most useful control at low colour counts. One bit of colour has no room for
+      error, so nudging the tonal balance before quantising is often the difference between a
+      readable image and a black smear.
+    </dd>
+
+    <dt>Strength</dt>
+    <dd>
+      How much of the quantisation error is actually passed on. Full strength gives the
+      cleanest tonal reproduction; pulling it down leaves some banding in place, which can
+      look pleasantly cheap and period-correct.
+    </dd>
+
+    <dt>Work at the size you will publish</dt>
+    <dd>
+      Dither texture is measured in pixels, not in percent. A pattern that looks perfect at
+      full size turns to mush when the image is scaled down afterwards, so export at the
+      dimensions you actually intend to use.
+    </dd>
+  </dl>
+
+  <h2>Frequently asked questions</h2>
+  <dl class="doc-list">
+    <dt>Are my images uploaded anywhere?</dt>
+    <dd>
+      No. Images are decoded, dithered and exported locally in a <code>&lt;canvas&gt;</code>
+      inside your browser. Nothing is sent to a server, there is no account, and no analytics
+      or tracking scripts are loaded.
+    </dd>
+
+    <dt>Which image formats can I use?</dt>
+    <dd>
+      Anything your browser can decode, which in practice means PNG, JPEG, WebP, GIF, AVIF and
+      SVG. Exports are always PNG, so the dithered pixels stay exact — a JPEG would smear them
+      immediately.
+    </dd>
+
+    <dt>Does it work on a phone?</dt>
+    <dd>
+      Yes. The layout stacks on small screens, and the compare slider, pinch to zoom and drag
+      to pan all work with touch.
+    </dd>
+
+    <dt>Is there a size limit?</dt>
+    <dd>
+      No hard limit. The live preview is capped at 1400 pixels on the long edge so it stays
+      responsive while you drag sliders, but exports are always rendered at the full
+      resolution of the original.
+    </dd>
+
+    <dt>Does it work offline?</dt>
+    <dd>
+      Yes. The page is a handful of static files with no dependencies and no external
+      requests, so once it has loaded it keeps working without a connection. You can also
+      clone the repository and open <code>index.html</code> straight from disk.
+    </dd>
+
+    <dt>Can I use the dithered images commercially?</dt>
+    <dd>
+      The tool is MIT licensed and claims no rights over what you make with it. Whatever
+      rights you had in the image you started from are the ones that apply to the result.
+    </dd>
+  </dl>
+
+</article>
+
+<footer class="site-footer">
+  <p>
+    <strong>Dither Studio</strong> — a free, open-source image dithering tool that runs
+    entirely in your browser.
+  </p>
+  <p class="muted">
+    Built by <a href="https://github.com/Zed2101" rel="author">Daniel Crantoc</a> ·
+    <a href="https://github.com/Zed2101/dither-studio">Source on GitHub</a> ·
+    <a href="https://github.com/Zed2101/dither-studio/releases/latest">Releases</a> ·
+    <a href="https://github.com/Zed2101/dither-studio/blob/main/LICENSE">MIT licence</a>
+  </p>
+  <p class="muted">
+    Set in <a href="https://fonts.google.com/specimen/DM+Sans">DM Sans</a> and
+    <a href="https://fonts.google.com/specimen/JetBrains+Mono">JetBrains Mono</a>.
+    Further reading on <a href="https://en.wikipedia.org/wiki/Dither" rel="nofollow">dithering</a>.
+  </p>
+</footer>
 
 <script src="app.js"></script>
 </body>
