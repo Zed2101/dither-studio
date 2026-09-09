@@ -19,8 +19,8 @@ a Game Boy screenshot, a CGA screen or an old sepia print — then export it as 
 - **Live before/after** — drag the slider across the image to compare the original
   with the dithered version. Scroll or pinch to zoom up to 16×, drag to pan,
   double-click to reset.
-- **Real controls** — pixel size, brightness/threshold, diffusion strength and
-  halftone dot grid, all updating as you drag.
+- **Real controls** — pixel size, brightness/threshold, invert, diffusion strength
+  and halftone dot grid, all updating as you drag.
 - **Batch friendly** — drop in several images at once, switch between them, and
   export the whole set as a single ZIP.
 - **Export anywhere** — download a full-resolution PNG, copy straight to the

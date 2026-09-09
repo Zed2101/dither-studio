@@ -337,6 +337,20 @@ input[type=range] { accent-color: var(--accent); width: 100%; margin: 0; }
 /* parameters */
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field[hidden] { display: none; }
+.field-check {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.field-check input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
 .field-head { display: flex; justify-content: space-between; font-size: 13px; }
 
 /* palettes */

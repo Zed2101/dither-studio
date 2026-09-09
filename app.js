@@ -176,7 +176,7 @@
   }
 
   /** Single-channel dithering for palettes that live on one tonal ramp. */
-  function ditherMono(data, w, h, pal, algo, bias, strength) {
+  function ditherMono(data, w, h, pal, algo, bias, strength, invert) {
     const { colors, levels, lo, hi, spread } = pal;
     const n = w * h;
     // Float buffer: quantisation error must accumulate untruncated, otherwise
@@ -184,7 +184,11 @@
     const buf = new Float32Array(n);
     for (let i = 0; i < n; i++) {
       const j = i * 4;
-      buf[i] = clamp(0.2126 * data[j] + 0.7152 * data[j + 1] + 0.0722 * data[j + 2] + bias, lo, hi);
+      let l = 0.2126 * data[j] + 0.7152 * data[j + 1] + 0.0722 * data[j + 2];
+      // Inversion happens before the bias, so the brightness slider still means
+      // "brighter" on whatever you end up looking at.
+      if (invert) l = 255 - l;
+      buf[i] = clamp(l + bias, lo, hi);
     }
 
     const kernel = KERNELS[algo];
@@ -218,15 +222,18 @@
   }
 
   /** Full RGB dithering, one error plane per channel. */
-  function ditherColor(data, w, h, pal, algo, bias, strength) {
+  function ditherColor(data, w, h, pal, algo, bias, strength, invert) {
     const { colors } = pal;
     const n = w * h;
     const buf = new Float32Array(n * 3);
     for (let i = 0; i < n; i++) {
       const j = i * 4;
-      buf[i * 3] = clamp(data[j] + bias, 0, 255);
-      buf[i * 3 + 1] = clamp(data[j + 1] + bias, 0, 255);
-      buf[i * 3 + 2] = clamp(data[j + 2] + bias, 0, 255);
+      const r = invert ? 255 - data[j] : data[j];
+      const g = invert ? 255 - data[j + 1] : data[j + 1];
+      const b = invert ? 255 - data[j + 2] : data[j + 2];
+      buf[i * 3] = clamp(r + bias, 0, 255);
+      buf[i * 3 + 1] = clamp(g + bias, 0, 255);
+      buf[i * 3 + 2] = clamp(b + bias, 0, 255);
     }
 
     const kernel = KERNELS[algo];
@@ -274,7 +281,7 @@
   };
 
   /** Variable-radius dots on a fixed grid, the way a newspaper screen works. */
-  function halftone(img, ctx, ow, oh, colors, cellPx, bias) {
+  function halftone(img, ctx, ow, oh, colors, cellPx, bias, invert) {
     const sorted = [...colors].sort((a, b) => lum(a) - lum(b));
     const dark = sorted[0];
     const light = sorted[sorted.length - 1];
@@ -294,7 +301,9 @@
     for (let y = 0; y < ch; y++) {
       for (let x = 0; x < cw; x++) {
         const i = (y * cw + x) * 4;
-        const l = clamp(0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2] + bias, 0, 255);
+        let l = 0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2];
+        if (invert) l = 255 - l;
+        l = clamp(l + bias, 0, 255);
         const r = R * Math.sqrt(1 - l / 255);
         if (r < 0.3) continue;
         ctx.beginPath();
@@ -406,6 +415,7 @@
     bias: 0,
     strength: 100,
     cell: 8,
+    invert: false,
     paletteId: 'bw',
     custom: ['#1a1a2e', '#e94560', '#f5f5f5'],
     split: 50,
@@ -425,7 +435,7 @@
     algos: $('algos'), palettes: $('palettes'), customRow: $('customRow'),
     pixel: $('pixel'), bias: $('bias'), strength: $('strength'), cell: $('cell'),
     pixelVal: $('pixelVal'), biasVal: $('biasVal'), strengthVal: $('strengthVal'), cellVal: $('cellVal'),
-    strengthField: $('strengthField'), cellField: $('cellField'),
+    strengthField: $('strengthField'), cellField: $('cellField'), invert: $('invert'),
     exportInfo: $('exportInfo'), png: $('png'), copy: $('copy'), zip: $('zip'),
     toast: $('toast'),
   };
@@ -441,7 +451,7 @@
   /* ============================================================ pipeline */
 
   function compute(entry, full) {
-    const { pixel, algo, bias, strength } = state;
+    const { pixel, algo, bias, strength, invert } = state;
     const spec = paletteColors();
     const pal = preparePalette(spec.colors, spec.mono);
 
@@ -466,14 +476,14 @@
     const dctx = dith.getContext('2d');
 
     if (algo === 'half') {
-      halftone(entry.img, dctx, ow, oh, pal.colors, state.cell * pixel, bias);
+      halftone(entry.img, dctx, ow, oh, pal.colors, state.cell * pixel, bias, invert);
     } else {
       const small = mk(sw, sh);
       const sctx = small.getContext('2d', { willReadFrequently: true });
       sctx.drawImage(entry.img, 0, 0, sw, sh);
       const id = sctx.getImageData(0, 0, sw, sh);
       const fn = pal.mono ? ditherMono : ditherColor;
-      fn(id.data, sw, sh, pal, algo, bias, strength / 100);
+      fn(id.data, sw, sh, pal, algo, bias, strength / 100, invert);
       sctx.putImageData(id, 0, 0);
       dctx.imageSmoothingEnabled = false;
       dctx.drawImage(small, 0, 0, ow, oh);
@@ -893,6 +903,11 @@
   el.copy.onclick = copyPng;
   el.zip.onclick = exportZip;
 
+  el.invert.onchange = () => {
+    state.invert = el.invert.checked;
+    schedule();
+  };
+
   for (const key of ['pixel', 'bias', 'strength', 'cell']) {
     el[key].oninput = () => {
       state[key] = +el[key].value;
@@ -949,6 +964,7 @@
   el.bias.value = state.bias;
   el.strength.value = state.strength;
   el.cell.value = state.cell;
+  el.invert.checked = state.invert;
 
   renderAlgos();
   renderPalettes();
